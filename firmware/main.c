@@ -7,8 +7,8 @@
 #include "uart.h"
 
 typedef struct {
-        int16_t temperature;
-        uint16_t humidity;
+    int16_t temperature;
+    uint16_t humidity;
 } values_t;
 
 int main() {
@@ -37,9 +37,13 @@ int main() {
             break;
 
         }
-        sprintf (s, "Hum:%u\tTemp:%d\n", values.humidity, values.temperature); UART_puts(s);
+        sprintf (s,
+            "Hum:%.1f\tTemp:%.1f\n",
+            (float)values.humidity / 10,
+            (float)values.temperature / 10);
+        UART_puts(s);
         sei();
-        _delay_ms(1000);
+        _delay_ms(10000);
     }
 
     return 0;

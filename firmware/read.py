@@ -2,13 +2,9 @@
 
 import serial
 
-#SERIAL  = "/dev/tty.NoZAP-PL2303-00002014"
-#SERIAL  = "/dev/tty.NoZAP-PL2303-000012FD"
-#SERIAL = "/dev/tty.usbserial-A9IDXBNR"
 SERIAL = "/dev/tty.usbserial-A90ZBP5L"
 
 ser = serial.Serial(SERIAL, 1200, stopbits=2)
-
 
 def readData():
     buff = []
@@ -18,10 +14,7 @@ def readData():
             print "". join(buff)
             return
         else:
-            buff.append(v) 
-
-def readData1():
-    print ord(ser.read())
+            buff.append(v)
 
 while 1:
     readData()
